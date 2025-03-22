@@ -1,9 +1,16 @@
 import streamlit as st
 import pickle
+import pickle
+import os
 
-# Load the trained model and vectorizer
-model = pickle.load(open('model.pkl', 'rb'))
-vectorizer = pickle.load(open('vectorizer.pkl', 'rb'))
+# Use a relative path to load the model and vectorizer
+current_dir = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(current_dir, 'model.pkl')
+vectorizer_path = os.path.join(current_dir, 'vectorizer.pkl')
+
+model = pickle.load(open(model_path, 'rb'))
+vectorizer = pickle.load(open(vectorizer_path, 'rb'))
+
 
 # App title
 st.title("SMS Spam Detection")
